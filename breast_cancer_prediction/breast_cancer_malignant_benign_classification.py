@@ -33,3 +33,7 @@ df_cancer.tail()
 
 
 sns.pairplot(df_cancer, hue = 'target', vars = ['mean radius', 'mean texture', 'mean area', 'mean perimeter', 'mean smoothness'] )
+
+sns.countplot(df_cancer['target'], label = "Count")
+sns.scatterplot(x = 'mean area', y = 'mean smoothness', hue = 'target', data = df_cancer)
+#sns.lmplot('mean area', 'mean smoothness', hue ='target', data = df_cancer_all, fit_reg=False)
