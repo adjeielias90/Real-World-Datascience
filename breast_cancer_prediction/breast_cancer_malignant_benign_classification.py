@@ -14,9 +14,8 @@ from sklearn.metrics import classification_report, confusion_matrix
 
 
 cancer = load_breast_cancer()
-
-
 cancer
+
 # What dictionaries[keys] are present in our dataset?
 cancer.keys()
 
@@ -50,7 +49,7 @@ sns.scatterplot(x = 'mean area', y = 'mean smoothness', hue = 'target', data = d
 plt.figure(figsize=(20,10))
 sns.heatmap(df_cancer.corr(), annot=True)
 
-# MODEL TRAINING (PROBLEM SOLUTION)
+# Train model
 
 # Let's drop the target label coloumns
 X = df_cancer.drop(['target'],axis=1)
@@ -72,3 +71,38 @@ y_test.shape
 
 svc_model = SVC()
 svc_model.fit(X_train, y_train)
+
+# Evaluate model
+y_predict = svc_model.predict(X_test)
+cm = confusion_matrix(y_test, y_predict)
+
+sns.heatmap(cm, annot=True)
+print(classification_report(y_test, y_predict))
+
+# Better results
+min_train = X_train.min()
+min_train
+
+range_train = (X_train - min_train).max()
+range_train
+
+X_train_scaled = (X_train - min_train)/range_train
+X_train_scaled
+
+sns.scatterplot(x = X_train['mean area'], y = X_train['mean smoothness'], hue = y_train)
+sns.scatterplot(x = X_train_scaled['mean area'], y = X_train_scaled['mean smoothness'], hue = y_train)
+
+min_test = X_test.min()
+range_test = (X_test - min_test).max()
+X_test_scaled = (X_test - min_test)/range_test
+
+
+# Fit model
+svc_model = SVC()
+svc_model.fit(X_train_scaled, y_train)
+
+y_predict = svc_model.predict(X_test_scaled)
+cm = confusion_matrix(y_test, y_predict)
+
+sns.heatmap(cm,annot=True,fmt="d")
+print(classification_report(y_test,y_predict))
