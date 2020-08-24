@@ -9,9 +9,13 @@ from sklearn.datasets import load_breast_cancer
 from sklearn.model_selection import train_test_split
 
 # Support vector machines
+# import support vector classifier
 from sklearn.svm import SVC
 from sklearn.metrics import classification_report, confusion_matrix
 
+
+# GridSearch to optimize c,gamma values in our model
+from sklearn.model_selection import GridSearchCV
 
 cancer = load_breast_cancer()
 cancer
@@ -80,6 +84,8 @@ sns.heatmap(cm, annot=True)
 print(classification_report(y_test, y_predict))
 
 # Better results
+
+# Normalize data again
 min_train = X_train.min()
 min_train
 
@@ -92,6 +98,8 @@ X_train_scaled
 sns.scatterplot(x = X_train['mean area'], y = X_train['mean smoothness'], hue = y_train)
 sns.scatterplot(x = X_train_scaled['mean area'], y = X_train_scaled['mean smoothness'], hue = y_train)
 
+
+# Normalize data again
 min_test = X_test.min()
 range_test = (X_test - min_test).max()
 X_test_scaled = (X_test - min_test)/range_test
@@ -106,3 +114,20 @@ cm = confusion_matrix(y_test, y_predict)
 
 sns.heatmap(cm,annot=True,fmt="d")
 print(classification_report(y_test,y_predict))
+
+
+# Better optimize model
+# Add GridSearch for better c and gamma values
+param_grid = {'C': [0.1, 1, 10, 100], 'gamma': [1, 0.1, 0.01, 0.001], 'kernel': ['rbf']}
+grid = GridSearchCV(SVC(),param_grid,refit=True,verbose=4)
+grid.fit(X_train_scaled,y_train)
+grid.best_params_
+grid.best_estimator_
+grid_predictions = grid.predict(X_test_scaled)
+cm = confusion_matrix(y_test, grid_predictions)
+sns.heatmap(cm, annot=True)
+
+
+
+# Declare our results
+print(classification_report(y_test,grid_predictions))
