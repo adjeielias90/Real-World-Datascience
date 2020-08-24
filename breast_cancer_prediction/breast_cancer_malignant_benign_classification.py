@@ -10,4 +10,17 @@ cancer = load_breast_cancer()
 
 
 cancer
+# What dictionaries[keys] are present in our dataset?
 cancer.keys()
+
+# Print select tuples
+print(cancer['DESCR'])
+print(cancer['target_names'])
+print(cancer['target'])
+print(cancer['feature_names'])
+print(cancer['data'])
+
+# How is our data frame shaped?
+cancer['data'].shape
+
+# Pandas to the rescue!
