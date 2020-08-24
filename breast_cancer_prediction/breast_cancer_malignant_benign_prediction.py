@@ -7,3 +7,7 @@ import seaborn as sns # Statistical data visualization
 # Import Cancer data drom the Sklearn library
 from sklearn.datasets import load_breast_cancer
 cancer = load_breast_cancer()
+
+
+cancer
+cancer.keys()
