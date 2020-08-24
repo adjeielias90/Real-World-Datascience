@@ -17,6 +17,8 @@ cancer.keys()
 print(cancer['DESCR'])
 print(cancer['target_names'])
 print(cancer['target'])
+
+
 print(cancer['feature_names'])
 print(cancer['data'])
 
@@ -24,3 +26,7 @@ print(cancer['data'])
 cancer['data'].shape
 
 # Pandas to the rescue!
+df_cancer = pd.DataFrame(np.c_[cancer['data'], cancer['target']], columns = np.append(cancer['feature_names'], ['target']))
+
+df_cancer.head()
+df_cancer.tail()
