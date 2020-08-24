@@ -2,7 +2,7 @@
 
 Real World Machine Learning projects inspired by the need to create, the curiousity to learn and personal goals.
 If you're like me, you have most certainly found yourself with a Machine Learning/Data Science case study or interview
-question that you could not or did not adequately prepare for, could not finish on time or you outright didin't have the required skillset.
+question that either you could not or did not adequately prepare for, could not finish on time or you outright didin't have the required skillset.
 
 That's what this repo is all about, reference when you find yourself stuck with a problem.
 Chances are, the solution or a variant of it exists in this repo.
