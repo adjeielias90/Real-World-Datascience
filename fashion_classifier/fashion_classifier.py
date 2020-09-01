@@ -4,6 +4,12 @@ import numpy as np # Import Numpy for data statistical analysis
 import matplotlib.pyplot as plt # Import matplotlib for data visualisation
 import seaborn as sns
 import random
+from sklearn.model_selection import train_test_split
+import keras
+from keras.models import Sequential
+from keras.layers import Conv2D, MaxPooling2D, Dense, Flatten, Dropout
+from keras.optimizers import Adam
+from keras.callbacks import TensorBoard
 
 # Import data
 
@@ -95,4 +101,26 @@ for i in np.arange(0, W_grid * L_grid): # create evenly spaces variables
 
 plt.subplots_adjust(hspace=0.4)
 
+# Prepare the training and testing dataset
+X_train = training[:,1:]/255
+y_train = training[:,0]
 
+X_test = testing[:,1:]/255
+y_test = testing[:,0]
+
+
+X_train, X_validate, y_train, y_validate = train_test_split(X_train, y_train, test_size = 0.2, random_state = 12345)
+
+X_train.shape
+y_train.shape
+
+# * unpack the tuple
+X_train = X_train.reshape(X_train.shape[0], *(28, 28, 1))
+X_test = X_test.reshape(X_test.shape[0], *(28, 28, 1))
+X_validate = X_validate.reshape(X_validate.shape[0], *(28, 28, 1))
+
+
+X_train.shape
+X_test.shape
+
+X_validate.shape
