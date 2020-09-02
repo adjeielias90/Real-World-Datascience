@@ -44,7 +44,7 @@ fashion_train_df.shape
 training = np.array(fashion_train_df, dtype = 'float32')
 testing = np.array(fashion_test_df, dtype='float32')
 
-# How does it look?
+# How does it look? Is it fat? Is it lean?
 training.shape
 
 # Show me
