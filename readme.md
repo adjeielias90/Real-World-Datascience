@@ -21,8 +21,9 @@ Cases are classified as malignant(serious) or benign(not serious) based on their
     First take a look at the dataset being used in your project of choice, then try
     to adapt your own dataset to look like the example used in the project.
 
-    * Choice 2:
+  * Choice 2(Advanced):
     You can avoid editing your dataset by adapting the code to fit it instead.
+    This requires more experience to do.
 
 ### Dependencies
 
