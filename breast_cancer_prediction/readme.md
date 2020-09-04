@@ -2,6 +2,7 @@
 
 Real World Machine Learning projects inspired by the need to create.
 Project 01: Predicting the risk of breast cancer growth as malignant or benign.
+Industry: Public Health
 
 ## Description
 

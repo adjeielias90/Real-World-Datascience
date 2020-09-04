@@ -1,11 +1,13 @@
-# Directing Customers to Subscription using app activity
+# Directing Customers to Subscriptions using app activity
 
 Real World Machine Learning projects inspired by the need to create.
-Project 03: Directing Customers to Subscription Through App Behavior Analysis
+Project 03: Directing Customers to Subscriptions/Suggestions Through App Behavior Analysis
+Industry: Fintech
 
 
 ## Description
-
+Evaluating users to soecify whether or noot they are likely to subscribe to
+a paid service, based on the behavior of such user on the platform.
 
 
 ## Getting Started

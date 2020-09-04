@@ -2,6 +2,7 @@
 
 Real World Machine Learning projects inspired by the need to create.
 Project 02: Classifies fashion of subjects into 10 separate fashion classes.
+Industry: Fashion, Gaming, Misc.
 
 ## Description
 
