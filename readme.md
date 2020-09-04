@@ -8,11 +8,6 @@ That's what this repo is all about, reference when you find yourself stuck with 
 Chances are, the solution or a variant of it exists in this repo.
 Knock yourself out.
 
-## Description
-
-A simple SVM(suppport vector machines) breast cancer classifier based on sk-learn.
-Cases are classified as malignant(serious) or benign(not serious) based on their classification score.
-
 ## Getting Started
 
 * How do I adapt this to my project?
