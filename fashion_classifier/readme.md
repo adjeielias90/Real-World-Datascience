@@ -1,7 +1,7 @@
 # Fashion classifier
 
 Real World Machine Learning projects inspired by the need to create.
-Project 02
+Project 02: Classifies fashion of subjects into 10 separate fashion classes.
 
 ## Description
 
