@@ -7,3 +7,9 @@ import numpy as np
 import seaborn as sn
 
 dataset = pd.read_csv('appdata10.csv')
+
+# Viewing the data
+dataset.head(10)
+
+# Distribution of numerical variables
+dataset.describe()
