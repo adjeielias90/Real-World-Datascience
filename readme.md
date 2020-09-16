@@ -20,6 +20,11 @@ Knock yourself out.
     You can avoid editing your dataset by adapting the code to fit it instead.
     This requires more experience to do.
 
+  * NB
+    For the projects that have more than one script make sure you run the pre-processing code
+    before you attempt running the model.
+    This is because the model makes use of files that are created by the data preprocessing.
+
 ### Dependencies
 
 * Describe any prerequisites, libraries, OS version, etc., needed before installing program.
