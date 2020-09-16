@@ -1,7 +1,7 @@
 # Directing Customers to Subscriptions using app activity
 
 Real World Machine Learning projects inspired by the need to create.
-Project 04: Evaluating users to specify whether or not they are likely to cancel their subscriptions/unsubscribe.
+Project 04: Minimizing Churn Rate Through Analysis of Financial Habits.
 Industry: Fintech
 
 
@@ -56,8 +56,8 @@ trivia_view_unlocked -> How many times a user viewed trivia view unlocked screen
 trivia_view_locked -> How many times a user viewed trivia view locked screen?.
 trivia_shared_results -> How many times a user shared trivia results?.
 trivia_played -> How many times a user played trivia?.
-re_linked_account -> Has the user re linked account?
-un_linked_account -> Has the user un linked account?
+re_linked_account -> Has the user re-linked account?.
+un_linked_account -> Has the user unlinked account?.
 credit_score -> Customer's credit score.
 
 
