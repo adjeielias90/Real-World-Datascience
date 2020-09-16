@@ -70,9 +70,6 @@ those users.
 
 We have been tasked to find users that are most likely to cancel their subscriptions
 
-That out of the way, let's go over the data we'll be using.
-We will discard everything else.
-
 
 ### Dependencies
 
