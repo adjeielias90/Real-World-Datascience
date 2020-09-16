@@ -18,7 +18,7 @@ dataset.describe() # Distribution of Numerical Variables
 dataset[dataset.credit_score < 300]
 dataset = dataset[dataset.credit_score >= 300]
 
-# Removing NaN
+# Removing NaN(not a number)
 dataset.isna().any()
 dataset.isna().sum()
 dataset = dataset.drop(columns = ['credit_score', 'rewards_earned'])
