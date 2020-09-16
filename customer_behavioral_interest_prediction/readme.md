@@ -7,7 +7,7 @@ Industry: Fintech
 
 ## Description
 
-Evaluating users to soecify whether or noot they are likely to subscribe to
+Evaluating users to specify whether or not they are likely to subscribe to
 a paid service, based on the behavior of such user on the platform.
 
 Service must have both a free and paid service, and this model will mostly
