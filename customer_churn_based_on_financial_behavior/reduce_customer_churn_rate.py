@@ -75,3 +75,18 @@ dataset2.drop(columns = ['housing', 'payment_type',
               title = 'Correlation with Response variable',
               fontsize = 15, rot = 45,
               grid = True)
+
+
+
+
+## Correlation Matrix
+sn.set(style="white")
+
+# Compute the correlation matrix
+corr = dataset.drop(columns = ['user', 'churn']).corr()
+
+# Generate a mask for the upper triangle
+mask = np.zeros_like(corr, dtype=np.bool)
+mask[np.triu_indices_from(mask)] = True
+
+
