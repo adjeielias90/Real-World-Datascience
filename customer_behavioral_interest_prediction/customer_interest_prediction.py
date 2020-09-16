@@ -73,19 +73,23 @@ dataset["enrolled_date"] = [parser.parse(row_date) if isinstance(row_date, str) 
 dataset.dtypes
 
 # Selecting Time For Response
-dataset["difference"] = (dataset.enrolled_date-dataset.first_open).astype('timedelta64[h]')
+dataset["difference"] = (dataset.enrolled_date - dataset.first_open).astype('timedelta64[h]')
 response_hist = plt.hist(dataset["difference"].dropna(), color='#3F5D7D')
 plt.title('Distribution of Time-Since-Screen-Reached')
 plt.show()
 
+# Further inspection informs us everything happens in the first 50+ hours
 plt.hist(dataset["difference"].dropna(), color='#3F5D7D', range = [0, 100])
 plt.title('Distribution of Time-Since-Screen-Reached')
 plt.show()
 
+# Select only first 48 hours to approximate
 dataset.loc[dataset.difference > 48, 'enrolled'] = 0
 dataset = dataset.drop(columns=['enrolled_date', 'difference', 'first_open'])
 
 ## Formatting the screen_list Field
+# Screens are too many to analyze
+# Thankfully our employer gave us the top screens users visit
 
 # Load Top Screens
 top_screens = pd.read_csv('top_screens.csv').top_screens.values
@@ -102,6 +106,7 @@ dataset['Other'] = dataset.screen_list.str.count(",")
 dataset = dataset.drop(columns=['screen_list'])
 
 # Funnels
+# Funnels are a group of screens that share a correlation
 savings_screens = ["Saving1",
                     "Saving2",
                     "Saving2Amount",
