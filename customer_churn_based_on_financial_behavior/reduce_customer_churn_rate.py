@@ -89,4 +89,6 @@ corr = dataset.drop(columns = ['user', 'churn']).corr()
 mask = np.zeros_like(corr, dtype=np.bool)
 mask[np.triu_indices_from(mask)] = True
 
+# Set up the matplotlib figure
+f, ax = plt.subplots(figsize=(18, 15))
 
