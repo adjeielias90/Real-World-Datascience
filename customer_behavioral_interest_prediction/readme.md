@@ -51,6 +51,10 @@ used_premium_feature -> if the user used any premium feature while on trial. boo
 enrolled -> whether or not they enrolled to use our premium service after the trial. boolean.
 enrolled_date -> date user enrolled.
 
+To Recap: Our aim is to produce a model that will label every new user
+as likely or unlikely to subscribe to a paid service.
+A company armed with this information can better narrow down targeted marketing to users.
+
 
 ### Dependencies
 
