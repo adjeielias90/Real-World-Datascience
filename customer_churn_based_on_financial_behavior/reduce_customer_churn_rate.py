@@ -59,3 +59,19 @@ for i in range(1, dataset2.shape[1] + 1):
     plt.pie(values, labels = index, autopct='%1.1f%%')
     plt.axis('equal')
 fig.tight_layout(rect=[0, 0.03, 1, 0.95])
+
+# Exploring Uneven Features
+dataset[dataset2.waiting_4_loan == 1].churn.value_counts()
+dataset[dataset2.cancelled_loan == 1].churn.value_counts()
+dataset[dataset2.received_loan == 1].churn.value_counts()
+dataset[dataset2.rejected_loan == 1].churn.value_counts()
+dataset[dataset2.left_for_one_month == 1].churn.value_counts()
+
+
+## Correlation with Response Variable
+dataset2.drop(columns = ['housing', 'payment_type',
+                         'registered_phones', 'zodiac_sign']
+    ).corrwith(dataset.churn).plot.bar(figsize=(20,10),
+              title = 'Correlation with Response variable',
+              fontsize = 15, rot = 45,
+              grid = True)
