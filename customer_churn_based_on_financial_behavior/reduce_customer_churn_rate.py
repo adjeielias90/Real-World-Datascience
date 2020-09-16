@@ -102,3 +102,8 @@ sn.heatmap(corr, mask=mask, cmap=cmap, vmax=.3, center=0,
 # Removing Correlated Fields
 dataset = dataset.drop(columns = ['app_web_user'])
 
+## Note: Although there are somewhat correlated fields, they are not colinear
+## These feature are not functions of each other, so they won't break the model
+## But these feature won't help much either. Feature Selection should remove them.
+
+dataset.to_csv('new_churn_data.csv', index = False)
