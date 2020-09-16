@@ -5,6 +5,9 @@ from dateutil import parser
 import matplotlib.pyplot as plt
 import numpy as np
 import seaborn as sn
+import matplotlib.pyplot as plt
+import time
+from sklearn.model_selection import train_test_split
 
 dataset = pd.read_csv('appdata10.csv')
 
@@ -147,3 +150,46 @@ dataset.describe()
 dataset.columns
 
 dataset.to_csv('new_appdata10.csv', index = False)
+
+
+
+
+
+
+# Begin building model
+dataset = pd.read_csv('new_appdata10.csv')
+
+
+#### Data Pre-Processing ####
+
+# Splitting Independent and Response Variables
+response = dataset["enrolled"]
+dataset = dataset.drop(columns="enrolled")
+
+# Splitting the dataset into the Training set and Test set
+from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(dataset, response,
+                                                    test_size = 0.2,
+                                                    random_state = 0)
+
+## Balancing the Training Set
+import random
+y_train.value_counts()
+
+pos_index = y_train[y_train.values == 1].index
+neg_index = y_train[y_train.values == 0].index
+
+if len(pos_index) > len(neg_index):
+   higher = pos_index
+   lower = neg_index
+else:
+   higher = neg_index
+   lower = pos_index
+
+random.seed(0)
+higher = np.random.choice(higher, size=len(lower))
+lower = np.asarray(lower)
+new_indexes = np.concatenate((lower, higher))
+
+X_train = X_train.loc[new_indexes,]
+y_train = y_train[new_indexes]
