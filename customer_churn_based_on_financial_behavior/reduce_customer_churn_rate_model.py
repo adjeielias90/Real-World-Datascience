@@ -74,4 +74,17 @@ X_test = X_test2
 
 # Fitting Model to the Training Set
 from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import confusion_matrix, accuracy_score, f1_score, precision_score, recall_score
 classifier = LogisticRegression(random_state = 0)
+classifier.fit(X_train, y_train)
+
+
+# Predicting Test Set
+y_pred = classifier.predict(X_test)
+
+# Evaluating Results
+cm = confusion_matrix(y_test, y_pred)
+accuracy_score(y_test, y_pred)
+precision_score(y_test, y_pred) # tp / (tp + fp)
+recall_score(y_test, y_pred) # tp / (tp + fn)
+f1_score(y_test, y_pred)
