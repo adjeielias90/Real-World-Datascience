@@ -68,3 +68,10 @@ X_test2.index = X_test.index.values
 # Our new training set
 X_train = X_train2
 X_test = X_test2
+
+# Model Building
+
+
+# Fitting Model to the Training Set
+from sklearn.linear_model import LogisticRegression
+classifier = LogisticRegression(random_state = 0)
