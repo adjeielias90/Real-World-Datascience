@@ -18,3 +18,4 @@ dataset.housing.value_counts()
 dataset.groupby('housing')['churn'].nunique().reset_index()
 dataset = pd.get_dummies(dataset)
 dataset.columns
+dataset = dataset.drop(columns = ['housing_na', 'zodiac_sign_na', 'payment_type_na'])
