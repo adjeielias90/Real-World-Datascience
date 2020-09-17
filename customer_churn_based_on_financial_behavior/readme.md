@@ -1,4 +1,4 @@
-# Directing Customers to Subscriptions using app activity
+# Predicting User Churn through Financial Analysis
 
 Real World Machine Learning projects inspired by the need to create.
 Project 04: Minimizing Churn Rate Through Analysis of Financial Habits.
