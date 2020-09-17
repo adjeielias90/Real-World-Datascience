@@ -68,7 +68,10 @@ Our job is to build a model that can correctly identify users
 that are not likely to purchase the premium(churn), so that the company can better engage
 those users.
 
-We have been tasked to find users that are most likely to cancel their subscriptions
+We have been tasked to find users that are most likely to cancel their subscriptions.
+
+Improving this project would be to add a time factor to our data, so our employer
+can guage when exactly users are likely to churn.
 
 
 ### Dependencies
