@@ -121,3 +121,57 @@ pd.concat([pd.DataFrame(X_train.columns, columns = ["features"]),
            pd.DataFrame(np.transpose(classifier.coef_), columns = ["coef"])
            ],axis = 1)
 
+
+# Feature Selection & Recursive Feature Elimination
+# Mantra: Less columns, more accurracy
+from sklearn.feature_selection import RFE
+from sklearn.linear_model import LogisticRegression
+
+# Model to test
+classifier = LogisticRegression()
+
+# Select Best X Features
+# Our rfe is the result of our feature selection
+rfe = RFE(classifier, 20)
+rfe = rfe.fit(X_train, y_train)
+
+# Summarize the selection of the attributes
+
+# This will tell us the columns that best predict results
+print(rfe.support_)
+
+# Gives us a numerical ranking of our important columns we got from above
+print(rfe.ranking_)
+
+# Let's use only the important columns to train our model
+X_train.columns[rfe.support_]
+
+# New Correlation Matrix
+sn.set(style="white")
+
+# Compute the correlation matrix
+corr = X_train[X_train.columns[rfe.support_]].corr()
+
+# Generate a mask for the upper triangle
+mask = np.zeros_like(corr, dtype=np.bool)
+mask[np.triu_indices_from(mask)] = True
+
+# Set up the matplotlib figure
+f, ax = plt.subplots(figsize=(18, 15))
+
+# Generate a custom diverging colormap
+cmap = sn.diverging_palette(220, 10, as_cmap=True)
+
+# Draw the heatmap with the mask and correct aspect ratio
+sn.heatmap(corr, mask=mask, cmap=cmap, vmax=.3, center=0,
+            square=True, linewidths=.5, cbar_kws={"shrink": .5})
+
+
+# Fitting Model to the Training Set
+
+# Let's use only the important columns we got from our selection to fit our model
+classifier = LogisticRegression()
+classifier.fit(X_train[X_train.columns[rfe.support_]], y_train)
+
+# Predicting Test Set
+y_pred = classifier.predict(X_test[X_train.columns[rfe.support_]])
