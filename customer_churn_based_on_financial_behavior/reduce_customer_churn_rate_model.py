@@ -175,3 +175,40 @@ classifier.fit(X_train[X_train.columns[rfe.support_]], y_train)
 
 # Predicting Test Set
 y_pred = classifier.predict(X_test[X_train.columns[rfe.support_]])
+
+
+# Evaluating Results
+# Not to re-invent the wheel we'll bring our code from above
+from sklearn.metrics import confusion_matrix, accuracy_score, f1_score, precision_score, recall_score
+cm = confusion_matrix(y_test, y_pred)
+accuracy_score(y_test, y_pred)
+precision_score(y_test, y_pred) # tp / (tp + fp)
+recall_score(y_test, y_pred) # tp / (tp + fn)
+f1_score(y_test, y_pred)
+
+df_cm = pd.DataFrame(cm, index = (1, 0), columns = (1, 0))
+plt.figure(figsize = (10,7))
+sn.set(font_scale=1.4)
+sn.heatmap(df_cm, annot=True, fmt='g')
+print("Test Data Accuracy: %0.4f" % accuracy_score(y_test, y_pred))
+
+# Applying K-Fold Cross Validation
+from sklearn.model_selection import cross_val_score
+accuracies = cross_val_score(estimator = classifier,
+                             X = X_train[X_train.columns[rfe.support_]],
+                             y = y_train, cv = 10)
+print("SVM Accuracy: %0.3f (+/- %0.3f)" % (accuracies.mean(), accuracies.std() * 2))
+
+# Analyzing Coefficients
+pd.concat([pd.DataFrame(X_train[X_train.columns[rfe.support_]].columns, columns = ["features"]),
+           pd.DataFrame(np.transpose(classifier.coef_), columns = ["coef"])
+           ],axis = 1)
+
+
+# Formatting Final Results
+# Let's tell our employer what our customer is more likey to do
+final_results = pd.concat([y_test, user_identifier], axis = 1).dropna()
+final_results['predicted_churn'] = y_pred
+
+# Finally:
+final_results = final_results[['user', 'churn', 'predicted_churn']].reset_index(drop=True)
