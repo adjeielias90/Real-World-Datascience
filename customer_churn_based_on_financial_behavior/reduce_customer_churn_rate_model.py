@@ -69,8 +69,9 @@ X_test2.index = X_test.index.values
 X_train = X_train2
 X_test = X_test2
 
-# Model Building
 
+
+# Model Building
 
 # Fitting Model to the Training Set
 from sklearn.linear_model import LogisticRegression
@@ -100,7 +101,10 @@ recall_score(y_test, y_pred) # tp / (tp + fn)
 # F1 is a fuction of both out precision and recall scores
 f1_score(y_test, y_pred)
 
+# Create a dataframe of the confusion matrix
 df_cm = pd.DataFrame(cm, index = (0, 1), columns = (0, 1))
+
+# Plot
 plt.figure(figsize = (10,7))
 sn.set(font_scale=1.4)
 sn.heatmap(df_cm, annot=True, fmt='g')
@@ -109,3 +113,8 @@ print("Test Data Accuracy: %0.4f" % accuracy_score(y_test, y_pred))
 # Applying K-Fold Cross Validation
 accuracies = cross_val_score(estimator = classifier, X = X_train, y = y_train, cv = 10)
 print("SVM Accuracy: %0.3f (+/- %0.3f)" % (accuracies.mean(), accuracies.std() * 2))
+
+# Analyzing Coefficients
+pd.concat([pd.DataFrame(X_train.columns, columns = ["features"]),
+           pd.DataFrame(np.transpose(classifier.coef_), columns = ["coef"])
+           ],axis = 1)
