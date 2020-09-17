@@ -19,3 +19,9 @@ dataset.groupby('housing')['churn'].nunique().reset_index()
 dataset = pd.get_dummies(dataset)
 dataset.columns
 dataset = dataset.drop(columns = ['housing_na', 'zodiac_sign_na', 'payment_type_na'])
+
+
+# Split the dataset into the training and test set
+X_train, X_test, y_train, y_test = train_test_split(dataset.drop(columns = 'churn'), dataset['churn'],
+                                                    test_size = 0.2,
+                                                    random_state = 0)
