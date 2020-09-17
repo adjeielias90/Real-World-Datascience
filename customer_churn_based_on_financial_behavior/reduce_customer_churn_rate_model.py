@@ -51,3 +51,20 @@ new_indexes = np.concatenate((lower, higher))
 
 X_train = X_train.loc[new_indexes,]
 y_train = y_train[new_indexes]
+
+# Feature Scaling
+# Feature scaling allows us to normalize all our numerical values so we dont have
+# too large or too small values in our dataset
+sc_X = StandardScaler()
+X_train2 = pd.DataFrame(sc_X.fit_transform(X_train))
+X_test2 = pd.DataFrame(sc_X.transform(X_test))
+
+# Lets preserve our column names so we do not lose it when we convert our df to a np array
+X_train2.columns = X_train.columns.values
+X_test2.columns = X_test.columns.values
+X_train2.index = X_train.index.values
+X_test2.index = X_test.index.values
+
+# Our new training set
+X_train = X_train2
+X_test = X_test2
