@@ -68,7 +68,7 @@ dataset[dataset2.rejected_loan == 1].churn.value_counts()
 dataset[dataset2.left_for_one_month == 1].churn.value_counts()
 
 
-## Correlation with Response Variable
+## Correlation plot with Response Variable
 dataset2.drop(columns = ['housing', 'payment_type',
                          'registered_phones', 'zodiac_sign']
     ).corrwith(dataset.churn).plot.bar(figsize=(20,10),
