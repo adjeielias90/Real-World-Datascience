@@ -25,3 +25,22 @@ dataset = dataset.drop(columns = ['housing_na', 'zodiac_sign_na', 'payment_type_
 X_train, X_test, y_train, y_test = train_test_split(dataset.drop(columns = 'churn'), dataset['churn'],
                                                     test_size = 0.2,
                                                     random_state = 0)
+
+
+
+
+
+# Balancing the Training Set
+y_train.value_counts()
+
+pos_index = y_train[y_train.values == 1].index
+neg_index = y_train[y_train.values == 0].index
+
+if len(pos_index) > len(neg_index):
+    higher = pos_index
+    lower = neg_index
+else:
+    higher = neg_index
+    lower = pos_index
+
+random.seed(0)
