@@ -25,7 +25,7 @@ The product itself is a loan, but that isn't what we are concerned about.
 Our job is to develop a model that can identify 'quality' applicants which are
 good candidates for our loaning service.
 
-Definition of quality depends on your dataset and what you may consider as a
+Definition of quality depends on your requirements(interests of your employer) ie: a user you may consider as a
 quality applicant based on your dataset.
 
 In our case study specifications, quality applicants are those who reach
