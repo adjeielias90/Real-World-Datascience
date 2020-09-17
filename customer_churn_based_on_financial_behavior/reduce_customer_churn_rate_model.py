@@ -6,6 +6,7 @@ import random
 import seaborn as sn
 import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
 
 dataset = pd.read_csv('new_churn_data.csv')
 
@@ -44,3 +45,9 @@ else:
     lower = pos_index
 
 random.seed(0)
+higher = np.random.choice(higher, size=len(lower))
+lower = np.asarray(lower)
+new_indexes = np.concatenate((lower, higher))
+
+X_train = X_train.loc[new_indexes,]
+y_train = y_train[new_indexes]
