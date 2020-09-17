@@ -115,6 +115,9 @@ accuracies = cross_val_score(estimator = classifier, X = X_train, y = y_train, c
 print("SVM Accuracy: %0.3f (+/- %0.3f)" % (accuracies.mean(), accuracies.std() * 2))
 
 # Analyzing Coefficients
+
+# Concatenate our dataframes
 pd.concat([pd.DataFrame(X_train.columns, columns = ["features"]),
            pd.DataFrame(np.transpose(classifier.coef_), columns = ["coef"])
            ],axis = 1)
+
