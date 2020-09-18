@@ -15,12 +15,13 @@ Knock yourself out.
   * Choice 1:
     First take a look at the dataset being used in your project of choice, then try
     to adapt your own dataset to look like the example used in the project.
+    For best performance, it has to be a similar usecase to the one used in the example.
 
   * Choice 2(Advanced):
     You can avoid editing your dataset by adapting the code to fit it instead.
-    This requires more experience to do.
+    This requires more experience to do, and probaly your best bet.
 
-  * NB
+  * A footnote:
     For the projects that have more than one script make sure you run the pre-processing code
     before you attempt running the model.
     This is because the model makes use of files that are created by the data preprocessing.
@@ -34,7 +35,7 @@ Knock yourself out.
   ipython etc will just display a module not found error.
   Make sure you install all the depencies before you attempt running the script.
 
-  Will include a lockfile later to address version conflicts.
+  Will include a lockfile later to address dependency version conflicts.
 
 
 ### Installing
