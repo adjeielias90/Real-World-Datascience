@@ -30,11 +30,11 @@ Knock yourself out.
 * Describe any prerequisites, libraries, OS version, etc., needed before installing program.
 * Python 3.
 * All other dependencies can be found at the top of every script.
-  Otherwise your python intepreter...conda, jupyter,
+  Otherwise your python interpreter...conda, jupyter,
   ipython etc will just display a module not found error.
   Make sure you install all the depencies before you attempt running the script.
 
-  Might include a lockfile later.
+  Will include a lockfile later to address version conflicts.
 
 
 ### Installing
