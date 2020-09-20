@@ -35,6 +35,9 @@ To be more specific, users that are able to complete the electronic signature
 phase of the application process.
 
 
+TLDR: We try to answer the question: Will this user apply for a loan from us?.
+
+
 ### Dependencies
 
 * Describe any prerequisites, libraries, OS version, etc., needed before installing program.
