@@ -75,6 +75,8 @@ classifier.fit(X_train, y_train)
 
 # Predicting Test Set
 y_pred = classifier.predict(X_test)
+
+# Import metrics
 from sklearn.metrics import confusion_matrix, accuracy_score, f1_score, precision_score, recall_score
 acc = accuracy_score(y_test, y_pred)
 prec = precision_score(y_test, y_pred)
