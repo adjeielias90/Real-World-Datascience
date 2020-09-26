@@ -6,7 +6,10 @@ question that either you could not or did not adequately prepare for, could not 
 
 That's what this repo is all about, reference when you find yourself stuck with a problem.
 Chances are, the solution or a variant of it exists in this repo.
+
+There's a little data analysis embedded in almost every project.
 Knock yourself out.
+
 
 ## Getting Started
 
