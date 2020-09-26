@@ -52,7 +52,7 @@ amount_requested -> Amount user requested for loan. Integer
 risk_score(s) -> User risk score on application decisions(based on different factors). Decimal(s)
 ext_quality_score(s) -> User external quality score(s) coming from external platform, eg: a P2P Marketplace. Decimal(s)
 inquiries_last_month -> How many inquiries user has had in the last month. Integer
-e_signed? -> Did user e-sign the loan? Boolean
+e_signed? -> Did user e-sign the loan?. This is our response variable. Boolean
 
 
 ### Dependencies
