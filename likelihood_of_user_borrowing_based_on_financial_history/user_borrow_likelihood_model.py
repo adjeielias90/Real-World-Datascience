@@ -110,6 +110,7 @@ model_results = pd.DataFrame([['SVM (Linear)', acc, prec, rec, f1]],
 results = results.append(model_results, ignore_index = True)
 
 
+
 ## SVM (rbf)
 from sklearn.svm import SVC
 classifier = SVC(random_state = 0, kernel = 'rbf')
@@ -124,5 +125,6 @@ f1 = f1_score(y_test, y_pred)
 
 model_results = pd.DataFrame([['SVM (RBF)', acc, prec, rec, f1]],
                columns = ['Model', 'Accuracy', 'Precision', 'Recall', 'F1 Score'])
+
 
 results = results.append(model_results, ignore_index = True)
