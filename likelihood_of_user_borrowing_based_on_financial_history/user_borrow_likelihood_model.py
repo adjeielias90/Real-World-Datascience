@@ -93,6 +93,7 @@ classifier = SVC(random_state = 0, kernel = 'linear')
 classifier.fit(X_train, y_train)
 
 # Predicting Test Set
+# We've already discussed this in previous projects
 y_pred = classifier.predict(X_test)
 acc = accuracy_score(y_test, y_pred)
 prec = precision_score(y_test, y_pred)
