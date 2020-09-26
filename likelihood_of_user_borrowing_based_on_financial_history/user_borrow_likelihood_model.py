@@ -63,3 +63,7 @@ X_test2.index = X_test.index.values
 # Finally our scaled datasets
 X_train = X_train2
 X_test = X_test2
+
+
+# Model Build
+# Compare Models and Metrics
