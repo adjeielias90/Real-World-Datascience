@@ -18,3 +18,9 @@ dataset = dataset.drop(columns = ['months_employed'])
 dataset['personal_account_months'] = (dataset.personal_account_m + (dataset.personal_account_y * 12))
 dataset[['personal_account_m', 'personal_account_y', 'personal_account_months']].head()
 dataset = dataset.drop(columns = ['personal_account_m', 'personal_account_y'])
+
+# One Hot Encoding
+
+dataset = pd.get_dummies(dataset)
+dataset.columns
+dataset = dataset.drop(columns = ['pay_schedule_semi-monthly'])
