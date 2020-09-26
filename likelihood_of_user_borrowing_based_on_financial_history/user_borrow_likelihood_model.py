@@ -111,7 +111,7 @@ results = results.append(model_results, ignore_index = True)
 
 
 
-## SVM (rbf)
+# SVM (RBF kernel)
 from sklearn.svm import SVC
 classifier = SVC(random_state = 0, kernel = 'rbf')
 classifier.fit(X_train, y_train)
@@ -126,5 +126,24 @@ f1 = f1_score(y_test, y_pred)
 model_results = pd.DataFrame([['SVM (RBF)', acc, prec, rec, f1]],
                columns = ['Model', 'Accuracy', 'Precision', 'Recall', 'F1 Score'])
 
+
+results = results.append(model_results, ignore_index = True)
+
+
+# SVM (RBF)
+from sklearn.ensemble import RandomForestClassifier
+classifier = RandomForestClassifier(random_state = 0, n_estimators = 100,
+                                    criterion = 'entropy')
+classifier.fit(X_train, y_train)
+
+# Predicting Test Set
+y_pred = classifier.predict(X_test)
+acc = accuracy_score(y_test, y_pred)
+prec = precision_score(y_test, y_pred)
+rec = recall_score(y_test, y_pred)
+f1 = f1_score(y_test, y_pred)
+
+model_results = pd.DataFrame([['Random Forest (n=100)', acc, prec, rec, f1]],
+               columns = ['Model', 'Accuracy', 'Precision', 'Recall', 'F1 Score'])
 
 results = results.append(model_results, ignore_index = True)
