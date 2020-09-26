@@ -37,6 +37,23 @@ phase of the application process.
 
 TLDR: We try to answer the question: Will this user apply for a loan from us?.
 
+Let's go over the data we will be using this time:
+
+age -> Is the age of the user. Integer
+pay_schedule -> Loan payback frequency. Can be weekly, bi-weekly, monthly, semi-monthly. String
+home_owner -> Does the customer own their house/property?. Boolean
+income -> User's monthly income. Integer
+years_employed -> Number of years user has worked current job. Integer
+current_address_year -> Number if years user has stayed at current address. Integer
+personal_account_m -> Number of months user has had personal account for. Integer
+personal_account_y -> Number of years user has had personal account for. Integer
+has_debt -> Does user have a debt(based on their credit)?. Boolean
+amount_requested -> Amount user requested for loan. Integer
+risk_score(s) -> User risk score on application decisions(based on different factors). Decimal(s)
+ext_quality_score(s) -> User external quality score(s) coming from external platform, eg: a P2P Marketplace. Decimal(s)
+inquiries_last_month -> How many inquiries user has had in the last month. Integer
+e_signed? -> Did user e-sign the loan? Boolean
+
 
 ### Dependencies
 
