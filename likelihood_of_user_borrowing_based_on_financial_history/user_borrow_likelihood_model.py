@@ -147,3 +147,10 @@ model_results = pd.DataFrame([['Random Forest (n=100)', acc, prec, rec, f1]],
                columns = ['Model', 'Accuracy', 'Precision', 'Recall', 'F1 Score'])
 
 results = results.append(model_results, ignore_index = True)
+
+
+# K-fold Cross Validation
+from sklearn.model_selection import cross_val_score
+accuracies = cross_val_score(estimator = classifier, X= X_train, y = y_train,
+                             cv = 10)
+print("Random Forest Classifier Accuracy: %0.2f (+/- %0.2f)"  % (accuracies.mean(), accuracies.std() * 2))
