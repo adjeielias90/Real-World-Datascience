@@ -67,3 +67,19 @@ X_test = X_test2
 
 # Model Build
 # Compare Models and Metrics
+
+## Logistic Regression
+from sklearn.linear_model import LogisticRegression
+classifier = LogisticRegression(random_state = 0, penalty = 'l1')
+classifier.fit(X_train, y_train)
+
+# Predicting Test Set
+y_pred = classifier.predict(X_test)
+from sklearn.metrics import confusion_matrix, accuracy_score, f1_score, precision_score, recall_score
+acc = accuracy_score(y_test, y_pred)
+prec = precision_score(y_test, y_pred)
+rec = recall_score(y_test, y_pred)
+f1 = f1_score(y_test, y_pred)
+
+results = pd.DataFrame([['Linear Regression (Lasso)', acc, prec, rec, f1]],
+               columns = ['Model', 'Accuracy', 'Precision', 'Recall', 'F1 Score'])
