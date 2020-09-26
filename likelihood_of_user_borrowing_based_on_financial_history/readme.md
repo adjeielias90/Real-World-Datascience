@@ -39,7 +39,7 @@ TLDR: We try to answer the question: Will this user apply for a loan from us?.
 
 Let's go over the data we will be using this time:
 
-As usual we will discard everything we don't need.
+As usual we will discard everything we don't need on the way.
 
 age -> Is the age of the user. Integer
 pay_schedule -> Loan payback frequency. Can be weekly, bi-weekly, monthly, semi-monthly. String
