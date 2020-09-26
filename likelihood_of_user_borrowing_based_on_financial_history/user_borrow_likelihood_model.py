@@ -43,3 +43,23 @@ X_train, X_test, y_train, y_test = train_test_split(dataset,
                                                     response,
                                                     test_size = 0.2,
                                                     random_state = 0)
+
+
+# Feature Scaling
+from sklearn.preprocessing import StandardScaler
+sc_X = StandardScaler()
+
+# We lose columns and indexes when we do this,
+# we take care of this below
+X_train2 = pd.DataFrame(sc_X.fit_transform(X_train))
+X_test2 = pd.DataFrame(sc_X.transform(X_test))
+
+# Save our model names and indexes
+X_train2.columns = X_train.columns.values
+X_test2.columns = X_test.columns.values
+X_train2.index = X_train.index.values
+X_test2.index = X_test.index.values
+
+# Finally our scaled datasets
+X_train = X_train2
+X_test = X_test2
