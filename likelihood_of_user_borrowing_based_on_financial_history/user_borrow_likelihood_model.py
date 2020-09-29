@@ -159,8 +159,6 @@ accuracies = cross_val_score(estimator = classifier, X= X_train, y = y_train,
 # This will take a while
 print("Random Forest Classifier Accuracy: %0.2f (+/- %0.2f)"  % (accuracies.mean(), accuracies.std() * 2))
 
-
-
 # Parameter Tuning
 
 # pip install joblib
@@ -205,3 +203,86 @@ model_results = pd.DataFrame([['Random Forest (n=100, GSx2 + Entropy)', acc, pre
                columns = ['Model', 'Accuracy', 'Precision', 'Recall', 'F1 Score'])
 
 results = results.append(model_results, ignore_index = True)
+
+
+
+# Round 1: Gini
+parameters = {"max_depth": [3, None],
+              "max_features": [1, 5, 10],
+              'min_samples_split': [2, 5, 10],
+              'min_samples_leaf': [1, 5, 10],
+              "bootstrap": [True, False],
+              "criterion": ["gini"]}
+
+from sklearn.model_selection import GridSearchCV
+grid_search = GridSearchCV(estimator = classifier, # Make sure classifier points to the RF model
+                           param_grid = parameters,
+                           scoring = "accuracy",
+                           cv = 10,
+                           n_jobs = -1)
+
+t0 = time.time()
+grid_search = grid_search.fit(X_train, y_train)
+t1 = time.time()
+print("Took %0.2f seconds" % (t1 - t0))
+
+rf_best_accuracy = grid_search.best_score_
+rf_best_parameters = grid_search.best_params_
+rf_best_accuracy, rf_best_parameters
+
+# Round 2: Gini
+parameters = {"max_depth": [None],
+              "max_features": [8, 10, 12],
+              'min_samples_split': [2, 3, 4],
+              'min_samples_leaf': [8, 10, 12],
+              "bootstrap": [True],
+              "criterion": ["gini"]}
+
+from sklearn.model_selection import GridSearchCV
+grid_search = GridSearchCV(estimator = classifier, # Make sure classifier points to the RF model
+                           param_grid = parameters,
+                           scoring = "accuracy",
+                           cv = 10,
+                           n_jobs = -1)
+
+t0 = time.time()
+grid_search = grid_search.fit(X_train, y_train)
+t1 = time.time()
+print("Took %0.2f seconds" % (t1 - t0))
+
+rf_best_accuracy = grid_search.best_score_
+rf_best_parameters = grid_search.best_params_
+rf_best_accuracy, rf_best_parameters
+
+
+# Predicting Test Set
+y_pred = grid_search.predict(X_test)
+acc = accuracy_score(y_test, y_pred)
+prec = precision_score(y_test, y_pred)
+rec = recall_score(y_test, y_pred)
+f1 = f1_score(y_test, y_pred)
+
+model_results = pd.DataFrame([['Random Forest (n=100, GSx2 + Gini)', acc, prec, rec, f1]],
+               columns = ['Model', 'Accuracy', 'Precision', 'Recall', 'F1 Score'])
+
+results = results.append(model_results, ignore_index = True)
+
+
+# EXTRAS: Confusion Matrix
+cm = confusion_matrix(y_test, y_pred) # rows = truth, cols = prediction
+df_cm = pd.DataFrame(cm, index = (0, 1), columns = (0, 1))
+plt.figure(figsize = (10,7))
+sn.set(font_scale=1.4)
+sn.heatmap(df_cm, annot=True, fmt='g')
+print("Test Data Accuracy: %0.4f" % accuracy_score(y_test, y_pred))
+
+
+
+# End of Model
+
+
+# Format & Show Final Results
+
+final_results = pd.concat([y_test, users], axis = 1).dropna()
+final_results['predictions'] = y_pred
+final_results = final_results[['entry_id', 'e_signed', 'predictions']]
