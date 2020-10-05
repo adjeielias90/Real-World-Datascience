@@ -37,6 +37,11 @@ phase of the application process.
 
 TLDR: We try to answer the question: Will this user apply for a loan from us?.
 
+One way to leverage this model is to target those predicted not to reach the
+e-sign phase with customized onboarding.
+
+
+
 Let's go over the data we will be using this time:
 
 As usual we will discard everything we don't need on the way.
