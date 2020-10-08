@@ -4,6 +4,11 @@ import numpy as np
 import keras
 from sklearn.preprocessing import StandardScaler
 
+# NN inports
+from keras.models import Sequential
+from keras.layers import Dense
+from keras.layers import Dropout
+
 np.random.seed(2)
 
 # small EDA, visualize data
