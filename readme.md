@@ -15,6 +15,10 @@ Knock yourself out.
 
 ## Getting Started
 
+* Please check README first.
+
+* Projects increase in complexity as you progress.
+
 * How do I adapt this to my project?
 
   * Choice 1:
