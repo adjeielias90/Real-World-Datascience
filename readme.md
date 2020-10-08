@@ -32,7 +32,7 @@ Knock yourself out.
 ### Dependencies
 
 * Describe any prerequisites, libraries, OS version, etc., needed before installing program.
-* Python 3.
+* Python 3(required).
 * All other dependencies can be found at the top of every script.
   Otherwise your python interpreter...conda, jupyter,
   ipython etc will just display a module not found error.
