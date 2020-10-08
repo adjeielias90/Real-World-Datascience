@@ -1,6 +1,8 @@
 # Real World Machine Learning
 
 Real World Machine Learning projects inspired by the need to create, the curiousity to learn and personal goals.
+
+Let's face it. Data science technical interviews are hard.
 If you're like me, you have most certainly found yourself with a Machine Learning/Data Science case study or interview
 question that either you could not or did not adequately prepare for, could not finish on time or you outright didin't have the required skillset.
 
