@@ -28,7 +28,7 @@ Knock yourself out.
 
   * Choice 2(Advanced):
     You can avoid editing your dataset by adapting the code to fit it instead.
-    This requires more experience to do, and probaly your best bet.
+    This requires more experience to do, and is probably your best bet.
 
   * A footnote:
     For the projects that have more than one script make sure you run the pre-processing code
