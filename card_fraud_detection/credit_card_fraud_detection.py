@@ -18,7 +18,7 @@ data.head()
 
 # Pre-processing
 
-# let's quickly reshape our amount column
+# let's quickly copy and reshape our amount column
 data['normalizedAmount'] = StandardScaler().fit_transform(data['Amount'].values.reshape(-1,1))
 
 # remove what we don't need
@@ -46,3 +46,22 @@ X_train = np.array(X_train)
 X_test = np.array(X_test)
 y_train = np.array(y_train)
 y_test = np.array(y_test)
+
+# Compose neural network
+
+model = Sequential([
+    Dense(units=16, input_dim = 29,activation='relu'),
+    Dense(units=24,activation='relu'),
+    Dropout(0.5),
+    Dense(20,activation='relu'),
+    Dense(24,activation='relu'),
+    Dense(1,activation='sigmoid'),
+])
+
+
+model.summary()
+model.compile(optimizer='adam',loss='binary_crossentropy',metrics=['accuracy'])
+model.fit(X_train,y_train,batch_size=15,epochs=5)
+
+score = model.evaluate(X_test, y_test)
+print(score)
