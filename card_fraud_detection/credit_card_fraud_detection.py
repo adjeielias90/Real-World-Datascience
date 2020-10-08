@@ -127,4 +127,82 @@ cnf_matrix = confusion_matrix(y_expected, y_pred.round())
 plot_confusion_matrix(cnf_matrix,classes=[0,1])
 plt.show()
 
+# Undersampling
 
+fraud_indices = np.array(data[data.Class == 1].index)
+number_records_fraud = len(fraud_indices)
+print(number_records_fraud)
+
+normal_indices = data[data.Class == 0].index
+
+random_normal_indices = np.random.choice(normal_indices, number_records_fraud, replace=False)
+random_normal_indices = np.array(random_normal_indices)
+print(len(random_normal_indices))
+
+under_sample_indices = np.concatenate([fraud_indices,random_normal_indices])
+print(len(under_sample_indices))
+
+under_sample_data = data.iloc[under_sample_indices,:]
+
+X_undersample = under_sample_data.iloc[:,under_sample_data.columns != 'Class']
+y_undersample = under_sample_data.iloc[:,under_sample_data.columns == 'Class']
+
+X_train, X_test, y_train, y_test = train_test_split(X_undersample,y_undersample, test_size=0.3)
+
+X_train = np.array(X_train)
+X_test = np.array(X_test)
+y_train = np.array(y_train)
+y_test = np.array(y_test)
+
+model.summary()
+
+model.compile(optimizer='adam',loss='binary_crossentropy',metrics=['accuracy'])
+model.fit(X_train,y_train,batch_size=15,epochs=5)
+
+y_pred = model.predict(X_test)
+y_expected = pd.DataFrame(y_test)
+cnf_matrix = confusion_matrix(y_expected, y_pred.round())
+plot_confusion_matrix(cnf_matrix, classes=[0,1])
+plt.show()
+
+y_pred = model.predict(X)
+y_expected = pd.DataFrame(y)
+cnf_matrix = confusion_matrix(y_expected, y_pred.round())
+plot_confusion_matrix(cnf_matrix, classes=[0,1])
+plt.show()
+
+# %%bash
+# pip install -U imbalanced-learn
+
+
+# Smote
+
+from imblearn.over_sampling import SMOTE
+
+X_resample, y_resample = SMOTE().fit_sample(X,y.values.ravel())
+
+y_resample = pd.DataFrame(y_resample)
+X_resample = pd.DataFrame(X_resample)
+
+X_train, X_test, y_train, y_test = train_test_split(X_resample,y_resample,test_size=0.3)
+
+X_train = np.array(X_train)
+X_test = np.array(X_test)
+y_train = np.array(y_train)
+y_test = np.array(y_test)
+
+
+model.compile(optimizer='adam',loss='binary_crossentropy',metrics=['accuracy'])
+model.fit(X_train,y_train,batch_size=15,epochs=5)
+
+y_pred = model.predict(X_test)
+y_expected = pd.DataFrame(y_test)
+cnf_matrix = confusion_matrix(y_expected, y_pred.round())
+plot_confusion_matrix(cnf_matrix, classes=[0,1])
+plt.show()
+
+y_pred = model.predict(X)
+y_expected = pd.DataFrame(y)
+cnf_matrix = confusion_matrix(y_expected, y_pred.round())
+plot_confusion_matrix(cnf_matrix, classes=[0,1])
+plt.show()
